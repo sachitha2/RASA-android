@@ -7,12 +7,16 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.Volley
 import com.example.rasachatbotapp.R
 import com.example.rasachatbotapp.resources.Functions
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.ktx.Firebase
 
 class registerActivity : AppCompatActivity() {
 
@@ -22,10 +26,14 @@ class registerActivity : AppCompatActivity() {
     private var queue : RequestQueue? = null
     private var pDialog : ProgressDialog? = null
     private var vistaPrincipal : View? = null
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_activity)
+
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance();
 
         // CASTING FROM VIEWS TO KOTLIN OBJECTS
         name = findViewById(R.id.register_name) as EditText
@@ -90,6 +98,23 @@ class registerActivity : AppCompatActivity() {
      */
     private fun attemptToRegister(name : String, email : String, password : String)
     {
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "createUserWithEmail:success")
+                    Toast.makeText(baseContext, "createUserWithEmail:success",
+                        Toast.LENGTH_SHORT).show()
+                    val user = auth.currentUser
+//                    updateUI(user)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                    Toast.makeText(baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT).show()
+//                    updateUI(null)
+                }
+            }
 
     }
 
@@ -133,5 +158,9 @@ class registerActivity : AppCompatActivity() {
             pDialog?.hide()
 //            Functions.showSnackbar(vistaPrincipal!!, getString(R.string.noHayConexionServidor))
         }
+    }
+
+    companion object {
+        private const val TAG = "EmailPassword"
     }
 }
