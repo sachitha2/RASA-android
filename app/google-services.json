@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "280728033556",
+    "project_id": "smartpillowsliit",
+    "storage_bucket": "smartpillowsliit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280728033556:android:dc99492735e258bfb14a01",
+        "android_client_info": {
+          "package_name": "com.example.rasachatbotapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280728033556-2rn2qfa46qv6uksfltacqs255n0iabo9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz7buYN9fGVzhYJf25oQ_lBq9YFm0eJjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "280728033556-2rn2qfa46qv6uksfltacqs255n0iabo9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
