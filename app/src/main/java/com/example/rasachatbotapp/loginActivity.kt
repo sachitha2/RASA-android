@@ -47,6 +47,10 @@ class loginActivity : AppCompatActivity() {
 
         // Add the button register event when its clicked
         btLogin.setOnClickListener {
+            //TODO Temp
+            var intent : Intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            //TODO Temp
 
             // Hide the Keyboard
             Functions.hideKeyboard(this.currentFocus, this)
