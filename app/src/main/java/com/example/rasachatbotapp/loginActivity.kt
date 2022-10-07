@@ -71,7 +71,7 @@ class loginActivity : AppCompatActivity() {
             else
             {
                 // Show the error to the user
-                Functions.showSnackbar(vistaPrincipal!!, getString(R.string.errorFaltanDatos))
+                Functions.showSnackbar(vistaPrincipal!!, getString(R.string.Wrong_Credentials))
             }
         }
 
