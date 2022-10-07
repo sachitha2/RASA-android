@@ -54,8 +54,8 @@ fun MainScreen(navigator: DestinationsNavigator) {
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         TopBarSection(
-            username = "Bot",
-            profile = painterResource(id = R.drawable.gojo),
+            username = "SleepBot",
+            profile = painterResource(id = R.drawable.sleep),
             isOnline = viewModel._connectivityState.value,
             navigator = navigator
         )

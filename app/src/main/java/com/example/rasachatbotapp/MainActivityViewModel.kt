@@ -17,7 +17,7 @@ class MainActivityViewModel : ViewModel() {
     private val connectivityState = mutableStateOf(true)
     val _connectivityState = connectivityState
 
-    val username = "Dishant"
+    val username = "Chamodi"
 
     fun addMessage(message: Message) {
         message_list.add(0, message)
