@@ -9,9 +9,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.android.volley.RequestQueue
-import com.android.volley.Response
-import com.android.volley.toolbox.Volley
 import com.example.rasachatbotapp.R
 import com.example.rasachatbotapp.resources.Functions
 import com.google.firebase.auth.FirebaseAuth
@@ -23,7 +20,6 @@ class registerActivity : AppCompatActivity() {
     private var name : EditText? = null
     private var email : EditText? = null
     private var password : EditText? = null
-    private var queue : RequestQueue? = null
     private var pDialog : ProgressDialog? = null
     private var vistaPrincipal : View? = null
     private lateinit var auth: FirebaseAuth
@@ -44,8 +40,7 @@ class registerActivity : AppCompatActivity() {
         var btnRegister : Button = findViewById(R.id.btRegistrarse) as Button
         var btnLinkToLogin : Button = findViewById(R.id.btnLinkToLogIn) as Button
 
-        // We create the queue for the HTTP Requests of the Volley Library
-        queue = Volley.newRequestQueue(this)
+
 
         // Progress Dialog
         pDialog = ProgressDialog(this)
@@ -141,23 +136,6 @@ class registerActivity : AppCompatActivity() {
         this.name?.setText("")
         this.email?.setText("")
         this.password?.setText("")
-    }
-
-    // Method executed when the Volley request fails
-    private fun requestError() : Response.ErrorListener
-    {
-        return Response.ErrorListener { error ->
-
-            // Show error message
-
-            // ! -- Remember if we get this error in Android com.android.volley.NoConnectionError: java.net.SocketException: socket failed: EACCES (Permission denied)
-            // its because we need to add an allowing permision to our app to access to Internet or local network in the manifest
-            // <uses-permission android:name="android.permission.INTERNET" />
-
-            Log.d("Volley", error.toString())
-            pDialog?.hide()
-//            Functions.showSnackbar(vistaPrincipal!!, getString(R.string.noHayConexionServidor))
-        }
     }
 
     companion object {

@@ -9,11 +9,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.android.volley.AuthFailureError
-import com.android.volley.RequestQueue
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import com.example.rasachatbotapp.R
 import com.example.rasachatbotapp.resources.Functions
 import com.google.firebase.auth.FirebaseAuth
@@ -25,7 +20,6 @@ class loginActivity : AppCompatActivity() {
     private var email : EditText? = null
     private var password : EditText? = null
     private var vistaPrincipal : View? = null
-    private var queue : RequestQueue? = null
     private var pDialog : ProgressDialog? = null
     private lateinit var auth: FirebaseAuth
 
@@ -47,8 +41,7 @@ class loginActivity : AppCompatActivity() {
         var btLogin : Button = findViewById(R.id.btLogin) as Button
         var btnLinkToRegisterScreen : Button = findViewById(R.id.btnLinkToRegisterScreen) as Button
 
-        // We create the queue for the HTTP Requests of the Volley Library
-        queue = Volley.newRequestQueue(this)
+
 
         // Progress dialog
         pDialog = ProgressDialog(this)
