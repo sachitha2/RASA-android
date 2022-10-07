@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">Sleep Bot</string>
+    <string name="descrMenu">Menu</string>
+    <string name="updateInfo">Update Info</string>
+    <string name="loginToolbar">login</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="passWord">Password</string>
+    <string name="btLogIn">Login</string>
+    <string name="startingLogin">Logging in...</string>
+    <string name="userNotEnabled">User Not Enabled</string>
+    <string name="incorrectPassword">Incorrect Password</string>
+    <string name="usernameNotExist">Username is not exists</string>
+    <string name="btn_link_to_register">Not a member? Register now.</string>
+    <string name="registerToolbar">Register</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="btRegister">Check in</string>
+    <string name="btn_link_to_login">Already a member? So sign in.</string>
+    <string name="RegisterOk">Registered, you can now log in with your user</string>
+    <string name="passwordNoCoincide">Passwords do not match</string>
+    <string name="errorAlRegistrar">Error registering user</string>
+    <string name="errorUserAlredyExists">Error, the user already exists with that email</string>
+    <string name="UnknownErrorRegistration">Unknown error registering</string>
+    <string name="ErrorPostParamsMissing">Error, missing POST parameters in HTTP request</string>
+    <string name="UserAlreadyExist">Error, user already exists</string>
+    <string name="Wrong_Credentials">wrong credentials</string>
+    <string name="Session_Started">logged in</string>
 </resources>
