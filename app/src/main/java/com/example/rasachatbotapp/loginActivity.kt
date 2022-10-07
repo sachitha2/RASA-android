@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.AuthFailureError
 import com.android.volley.RequestQueue
@@ -56,8 +57,8 @@ class loginActivity : AppCompatActivity() {
         // Add the button register event when its clicked
         btLogin.setOnClickListener {
             //TODO Temp
-            var intent : Intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+//            var intent : Intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
             //TODO Temp
 
             // Hide the Keyboard
@@ -73,7 +74,23 @@ class loginActivity : AppCompatActivity() {
                 try
                 {
                     // Try to login
-                    attemptToLogin(e, p)
+                    auth.signInWithEmailAndPassword(e, p)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d(TAG, "signInWithEmail:success")
+                                Toast.makeText(baseContext, "signInWithEmail:success",
+                                    Toast.LENGTH_SHORT).show()
+                                val user = auth.currentUser
+//                                updateUI(user)
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w(TAG, "signInWithEmail:failure", task.exception)
+                                Toast.makeText(baseContext, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show()
+//                                updateUI(null)
+                            }
+                        }
                 }
                 catch(excp : Exception)
                 {
@@ -143,5 +160,9 @@ class loginActivity : AppCompatActivity() {
     {
         email?.setText("")
         password?.setText("")
+    }
+
+    companion object {
+        private const val TAG = "EmailPassword"
     }
 }
