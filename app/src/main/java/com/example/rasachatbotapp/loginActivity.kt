@@ -49,10 +49,7 @@ class loginActivity : AppCompatActivity() {
 
         // Add the button register event when its clicked
         btLogin.setOnClickListener {
-            //TODO Temp
-//            var intent : Intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-            //TODO Temp
+
 
             // Hide the Keyboard
             Functions.hideKeyboard(this.currentFocus, this)
@@ -74,6 +71,8 @@ class loginActivity : AppCompatActivity() {
                                 Log.d(TAG, "signInWithEmail:success")
                                 Toast.makeText(baseContext, "signInWithEmail:success",
                                     Toast.LENGTH_SHORT).show()
+                                var intent : Intent = Intent(this, MainActivity::class.java)
+                                startActivity(intent)
                                 val user = auth.currentUser
 //                                updateUI(user)
                             } else {
@@ -112,6 +111,8 @@ class loginActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
         if(currentUser != null){
             Functions.showSnackbar(vistaPrincipal!!, "User available")
+            var intent : Intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }else{
             Functions.showSnackbar(vistaPrincipal!!, "User not available")
         }
