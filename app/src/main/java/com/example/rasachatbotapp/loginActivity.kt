@@ -15,7 +15,9 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.rasachatbotapp.R
 import com.example.rasachatbotapp.resources.Functions
-import org.json.JSONObject
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.ktx.Firebase
 
 class loginActivity : AppCompatActivity() {
 
@@ -24,11 +26,17 @@ class loginActivity : AppCompatActivity() {
     private var vistaPrincipal : View? = null
     private var queue : RequestQueue? = null
     private var pDialog : ProgressDialog? = null
+    private lateinit var auth: FirebaseAuth
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_activity)
+
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance();
+
 
         // CASTING FROM VIEWS TO KOTLIN OBJECTS
         email = findViewById(R.id.loginEmail) as EditText
@@ -86,6 +94,19 @@ class loginActivity : AppCompatActivity() {
         }
 
     }
+
+    // [START on_start_check_user]
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        if(currentUser != null){
+            Functions.showSnackbar(vistaPrincipal!!, "User available")
+        }else{
+            Functions.showSnackbar(vistaPrincipal!!, "User not available")
+        }
+    }
+    // [END on_start_check_user]
 
     /**
      * Method to try to login the user
