@@ -10,10 +10,8 @@ import com.example.rasachatbotapp.network.rasaApiService
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 import java.util.*
-import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.firestoreSettings
-import com.google.firebase.firestore.ktx.toObject
 
 class MainActivityViewModel : ViewModel() {
     private val message_list: MutableList<Message> = mutableStateListOf()

@@ -26,6 +26,7 @@ import com.google.firebase.ktx.Firebase
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import java.security.Timestamp
 import java.util.*
 
 val viewModel = MainActivityViewModel()
@@ -64,7 +65,21 @@ class MainActivity : ComponentActivity() {
             .addOnSuccessListener { result ->
                 for (document in result) {
                     Log.d("RASA", "${document.id} => ${document.data}")
-                    viewModel.addMessage(document.data)
+
+//                    val message = document.toObject<Message>();
+
+
+
+                    val dd = document.getDate("time")
+                    viewModel.addMessage(
+
+                        Message(
+                            text = document.get("text") as String?,
+                            recipient_id = document.get("recipient_id") as String,
+                            time = dd as Date,
+                            isOut = document.getBoolean("out") as Boolean
+                        )
+                    )
                 }
             }
             .addOnFailureListener { exception ->
@@ -78,7 +93,7 @@ class MainActivity : ComponentActivity() {
 @Destination(start = true)
 @Composable
 fun MainScreen(navigator: DestinationsNavigator) {
-
+    Log.d("RASA","sam is well")
     val context = LocalContext.current
     val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
