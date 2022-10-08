@@ -77,7 +77,8 @@ class MainActivity : ComponentActivity() {
                             text = document.get("text") as String?,
                             recipient_id = document.get("recipient_id") as String,
                             time = dd as Date,
-                            isOut = document.getBoolean("out") as Boolean
+                            isOut = document.getBoolean("out") as Boolean,
+                            image = document.get("image") as String?
                         )
                     )
                 }
