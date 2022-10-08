@@ -35,12 +35,25 @@ class MainActivityViewModel : ViewModel() {
     val _connectivityState = connectivityState
 
     val username = "Chamodi@gmail.com"
+    var messagesLoaded = "false"
 
     fun addMessage(message: Message) {
         message_list.add(0, message)
     }
 
     fun sendMessagetoRasa(message: Message) {
+
+        if(messagesLoaded == "false"){
+            Log.d("RASA", "Message list status$messagesLoaded")
+
+            // [START get_firestore_data]
+
+            // [END get_firestore_data]
+
+            messagesLoaded = "true"
+        }
+
+
         // [START get_firestore_instance]
         val db = Firebase.firestore
         // [END get_firestore_instance]
