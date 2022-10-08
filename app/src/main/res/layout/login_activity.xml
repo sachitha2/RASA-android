@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".loginActivity"
+    android:background="@drawable/sleep"
     >
 
     <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -17,31 +18,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/login_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/primary"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark">
+<!--            <androidx.appcompat.widget.Toolbar-->
+<!--                android:id="@+id/login_toolbar"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="?attr/actionBarSize"-->
+<!--                android:background="@color/primary"-->
+<!--                android:theme="@style/ThemeOverlay.AppCompat.Dark">-->
 
-                <TextView
-                    android:id="@+id/toolbar_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/loginToolbar"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
+<!--                <TextView-->
+<!--                    android:id="@+id/toolbar_title"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:text="@string/loginToolbar"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="18dp"-->
+<!--                    android:textStyle="bold" />-->
 
-            </androidx.appcompat.widget.Toolbar>
+<!--            </androidx.appcompat.widget.Toolbar>-->
 
 
             <!-- ALL THE LOGIN -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/login_toolbar"
                 android:layout_marginTop="50dp"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -55,6 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
+                    android:textColorHint="@color/white"
                     android:inputType="text" />
 
                 <!-- ENTER PASSWORD -->
@@ -63,6 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/passWord"
+                    android:textColorHint="@color/white"
                     android:inputType="textPassword" />
 
                 <!-- BUTTON FOR START THE LOGIN -->
