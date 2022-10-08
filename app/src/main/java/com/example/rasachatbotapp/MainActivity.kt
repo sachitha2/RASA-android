@@ -3,6 +3,7 @@ package com.example.rasachatbotapp
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -19,16 +20,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.rasachatbotapp.network.Message
 import com.example.rasachatbotapp.ui.theme.RasaChatbotAppTheme
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.firestoreSettings
+import com.google.firebase.ktx.Firebase
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import java.util.*
 
+val viewModel = MainActivityViewModel()
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+
         setContent {
             RasaChatbotAppTheme {
                 // A surface container using the 'background' color from the theme
@@ -37,13 +43,42 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+
+        Log.d("chata","chata");
+        val username = "Chamodi@gmail.com"
+        // [START] load chat history from here
+        // [START get_firestore_instance]
+        val db = Firebase.firestore
+        // [END get_firestore_instance]
+
+        // [START set_firestore_settings]
+        val settings = firestoreSettings {
+            isPersistenceEnabled = true
+        }
+        db.firestoreSettings = settings
+        // [END set_firestore_settings]
+
+        // [START get_firestore_data]
+        db.collection(username)
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d("RASA", "${document.id} => ${document.data}")
+                    viewModel.addMessage(document.data)
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w("RASA", "Error getting documents.", exception)
+            }
+        // [END get_firestore_data]
+        // [END] load chat history end from here
     }
 }
 
 @Destination(start = true)
 @Composable
 fun MainScreen(navigator: DestinationsNavigator) {
-    val viewModel = MainActivityViewModel()
+
     val context = LocalContext.current
     val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -62,6 +97,7 @@ fun MainScreen(navigator: DestinationsNavigator) {
         ChatSection(Modifier.weight(1f), viewModel, navigator = navigator)
         MessageSection(viewModel)
     }
+
 
 }
 

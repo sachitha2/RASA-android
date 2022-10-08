@@ -10,18 +10,6 @@ import com.example.rasachatbotapp.network.rasaApiService
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 import java.util.*
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentChange
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FieldPath
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.FirebaseFirestoreSettings
-import com.google.firebase.firestore.MetadataChanges
-import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.ServerTimestamp
-import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.firestoreSettings
@@ -35,24 +23,12 @@ class MainActivityViewModel : ViewModel() {
     val _connectivityState = connectivityState
 
     val username = "Chamodi@gmail.com"
-    var messagesLoaded = "false"
 
     fun addMessage(message: Message) {
         message_list.add(0, message)
     }
 
     fun sendMessagetoRasa(message: Message) {
-
-        if(messagesLoaded == "false"){
-            Log.d("RASA", "Message list status$messagesLoaded")
-
-            // [START get_firestore_data]
-
-            // [END get_firestore_data]
-
-            messagesLoaded = "true"
-        }
-
 
         // [START get_firestore_instance]
         val db = Firebase.firestore
@@ -64,6 +40,11 @@ class MainActivityViewModel : ViewModel() {
         }
         db.firestoreSettings = settings
         // [END set_firestore_settings]
+
+
+
+
+
         db.collection(username)
             .add(message)
             .addOnSuccessListener { documentReference ->
