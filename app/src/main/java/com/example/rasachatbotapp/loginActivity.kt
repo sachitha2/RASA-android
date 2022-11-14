@@ -71,7 +71,8 @@ class loginActivity : AppCompatActivity() {
                                 Log.d(TAG, "signInWithEmail:success")
                                 Toast.makeText(baseContext, "signInWithEmail:success",
                                     Toast.LENGTH_SHORT).show()
-                                var intent : Intent = Intent(this, MainActivity::class.java)
+//                                var intent : Intent = Intent(this, MainActivity::class.java)
+                                var intent : Intent = Intent(this, TestJava::class.java)
                                 startActivity(intent)
                                 val user = auth.currentUser
 //                                updateUI(user)
@@ -111,7 +112,8 @@ class loginActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
         if(currentUser != null){
             Functions.showSnackbar(vistaPrincipal!!, "User available")
-            var intent : Intent = Intent(this, MainActivity::class.java)
+//            var intent : Intent = Intent(this, MainActivity::class.java)
+            var intent : Intent = Intent(this, TestJava::class.java)
             startActivity(intent)
         }else{
             Functions.showSnackbar(vistaPrincipal!!, "User not available")

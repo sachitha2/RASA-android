@@ -3,7 +3,7 @@
     package="com.example.rasachatbotapp">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,9 +11,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:theme="@style/Theme.RasaChatbotApp"
         android:usesCleartextTraffic="true"
-        android:windowSoftInputMode="adjustResize"
-        android:theme="@style/Theme.RasaChatbotApp">
+        android:windowSoftInputMode="adjustResize">
+        <activity
+            android:name=".TestJava"
+            android:exported="false" />
         <activity
             android:name=".loginActivity"
             android:exported="true"
@@ -25,9 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".registerActivity"></activity>
-        <activity android:name=".MainActivity"></activity>
-
+        <activity android:name=".registerActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
