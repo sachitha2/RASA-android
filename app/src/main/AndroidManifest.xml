@@ -37,6 +37,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".registerActivity" />
+        <activity android:name=".login" />
     </application>
 
 </manifest>
