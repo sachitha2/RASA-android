@@ -39,9 +39,8 @@ public class login extends AppCompatActivity {
         CallSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                TODO temp
-//                Intent intent = new Intent(login.this, signup.class);
-//                startActivity(intent);
+                Intent intent = new Intent(login.this, signup.class);
+                startActivity(intent);
             }
         });
     }
@@ -90,7 +89,7 @@ public class login extends AppCompatActivity {
 
         progress_Barlogin.setVisibility(View.VISIBLE);
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Admin");
+        DatabaseReference reference = FirebaseDatabase.getInstance("https://smartpillowsliit-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Admin");
 
         Query checkUser = reference.orderByChild("telNum").equalTo(userEnteredTELNum);
 
@@ -119,16 +118,16 @@ public class login extends AppCompatActivity {
 
                         /*Intent intent = new Intent(getApplicationContext(), MainMenu.class);*/
 
-//                        Intent intent = new Intent(login.this,MainMenu.class);
-//                        intent.putExtra("fname", fnameFromDB);
-//                        intent.putExtra("username", usernameFromDB);
-//                        intent.putExtra("telNum", telNumberFromDB);
-//                        intent.putExtra("gurtelNum", gurtelNumberFromDB);
-//                        intent.putExtra("userage", userageFromDB);
-//                        intent.putExtra("password", passwordFromDB);
-//                        intent.putExtra("cpassword", cpasswordFromDB);
-//                        startActivity(intent);
-//                        finish();
+                        Intent intent = new Intent(login.this,MainMenu.class);
+                        intent.putExtra("fname", fnameFromDB);
+                        intent.putExtra("username", usernameFromDB);
+                        intent.putExtra("telNum", telNumberFromDB);
+                        intent.putExtra("gurtelNum", gurtelNumberFromDB);
+                        intent.putExtra("userage", userageFromDB);
+                        intent.putExtra("password", passwordFromDB);
+                        intent.putExtra("cpassword", cpasswordFromDB);
+                        startActivity(intent);
+                        finish();
                     } else {
                         passwordLogin.setError("Wrong Password");
                         passwordLogin.requestFocus();
