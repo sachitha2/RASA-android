@@ -95,6 +95,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-core'
     implementation 'com.google.firebase:firebase-firestore-ktx'
+
+    implementation 'com.google.firebase:firebase-database:20.1.0'
     
     ksp 'io.github.raamcosta.compose-destinations:ksp:1.1.2-beta'
 }
